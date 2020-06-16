@@ -31,11 +31,11 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [
-  {
-    path: '/login',
-    component: () => import('@/views/login/index'),
-    hidden: true
-  },
+  // {
+  //   path: '/login',
+  //   component: () => import('@/views/login/index'),
+  //   hidden: true
+  // },
 
   {
     path: '/404',
@@ -46,15 +46,72 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/home',
     children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      path: 'home',
+      name: 'Home',
+      component: () => import('@/views/home/index'),
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
 
+  {
+    path: '/viewProduct',
+    component: Layout,
+    redirect: '/viewProduct',
+    children: [
+      {
+        path: '',
+        name: 'ViewProduct',
+        component: () => import('@/views/viewProduct/index'),
+        meta: { title: '查看商品', icon: 'viewProduct' }
+      }
+    ]
+  },
+
+  {
+    path: '/postGoods',
+    component: Layout,
+    redirect: '/postGoods',
+    children: [
+      {
+        path: '',
+        name: 'PostGoods',
+        component: () => import('@/views/postGoods/index'),
+        meta: { title: '发布', icon: 'postGoods' }
+      }
+    ]
+  },
+
+  {
+    path: '/checkOrder',
+    component: Layout,
+    redirect: '/checkOrder',
+    children: [
+      {
+        path: '',
+        name: 'CheckOrder',
+        component: () => import('@/views/checkOrder/index'),
+        meta: { title: '查看订单', icon: 'checkOrder' }
+      }
+    ]
+  },
+
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user',
+    children: [
+      {
+        path: '',
+        name: 'User',
+        component: () => import('@/views/user/index'),
+        meta: { title: '我的', icon: 'user' }
+      }
+    ]
+  },
+  // 参考路由格式
+  /*
   {
     path: '/example',
     component: Layout,
@@ -158,7 +215,7 @@ export const constantRoutes = [
       }
     ]
   },
-
+*/
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
@@ -166,6 +223,7 @@ export const constantRoutes = [
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
+  base: '/supplier/',
   routes: constantRoutes
 })
 
